@@ -1,14 +1,17 @@
 package Reto01Acceso;
 
 import java.io.*;
-import javax.swing.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Oscar Revuelta
  */
 public class BlocDeNotas extends javax.swing.JFrame {
-    
 
     /**
      *
@@ -20,7 +23,7 @@ public class BlocDeNotas extends javax.swing.JFrame {
      */
     public BlocDeNotas() {
         initComponents();
-        
+
     }
 
     /**
@@ -174,15 +177,15 @@ public class BlocDeNotas extends javax.swing.JFrame {
 
             this.ficheroActual = fc.getSelectedFile();
             if (ficheroActual.exists()) {
-                    int opciones = JOptionPane.showConfirmDialog(BlocDeNotas.this, "El archivo ya existe. ¿Desea sobrescribirlo?", "Confirmar Sobrescritura", JOptionPane.YES_NO_OPTION);
-                    if (opciones == JOptionPane.NO_OPTION) {
-                        return;
-                    }
+                int opciones = JOptionPane.showConfirmDialog(BlocDeNotas.this, "El archivo ya existe. ¿Desea sobrescribirlo?", "Confirmar Sobrescritura", JOptionPane.YES_NO_OPTION);
+                if (opciones == JOptionPane.NO_OPTION) {
+                    return;
                 }
-                try (PrintWriter writer = new PrintWriter(ficheroActual)) {
-                    writer.print(textareaContenido.getText());
-                } catch (IOException ex) {
-                }
+            }
+            try (PrintWriter writer = new PrintWriter(ficheroActual)) {
+                writer.print(textareaContenido.getText());
+            } catch (IOException ex) {
+            }
 
             this.escribirFichero();
 
@@ -201,7 +204,6 @@ public class BlocDeNotas extends javax.swing.JFrame {
             Logger.getLogger(BlocDeNotas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 
     /**
      *
