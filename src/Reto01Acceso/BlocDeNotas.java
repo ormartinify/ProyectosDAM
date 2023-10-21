@@ -205,6 +205,9 @@ public class BlocDeNotas extends javax.swing.JFrame {
         }
     }
 
+    
+    
+    
     /**
      *
      * @param args
